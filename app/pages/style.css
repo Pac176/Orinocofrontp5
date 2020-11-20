@@ -1,0 +1,207 @@
+/* {
+    border: 1px black solid;
+   
+}
+*/
+
+@keyframes bounce{
+     from {transform: scale(0.9) translate3d(1px,7px,0); 
+    }
+    50%  {transform: scale(1.2) translate3d(1px,7px,0);
+    }
+    to   {transform: scale(0.9) translate3d(1px,7px,0);
+    }
+}
+
+h1 {
+  margin-left: 1rem;
+
+  
+}
+h2{
+  font-size:1.5rem;
+}
+.titre{
+font-size:2rem;
+text-align: center;
+}
+body {
+  background-color:#bdb4af; 
+ 
+}
+.navbar-brand {
+  display:flex;
+  font-family: 'belligerent_madnessregular';
+  font-size: 2rem;
+  color: #F3E9F1;
+ }
+
+.navbar {
+  background-color: #F3E9F1;
+  position: fixed;
+  z-index: 2; }
+
+.foot {
+  background-color: #F3E9F1;
+   }
+
+.jumbotron {
+  background-color: #797478;
+  color: #F3E9F1;
+  font-size: 2rem;
+  font-family: 'belligerent_madnessregular';
+  padding-top: 6rem; }
+
+.carousel {
+  max-width: 30rem;
+  margin: auto;
+  padding-top: 3rem;
+  padding-bottom: 1rem; }
+
+.teddies {
+    margin: 8rem 2rem 2rem 2rem ;
+    display: flex;
+    
+}
+
+.teddiesDetails {
+  justify-content: center;
+
+}
+
+
+
+.card-body {
+    display:flex;
+    flex-direction: column;
+    margin: 2rem 2rem 2rem 2rem ;
+    border: 1px solid rgb(168, 123, 123)
+}
+
+.cardListe { 
+  box-shadow: rgb(139, 70, 141) 1px 1px 5px 0px;
+  margin-bottom: 2rem; 
+  
+  }
+
+.card-text {
+  display:flex;
+  justify-content: center;
+  font-family: 'Source Sans Pro';
+  font-size: 1.2rem;
+  text-align: justify;
+
+}
+.prix {
+  font-size:1.7rem;
+}
+.infoListe {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+   margin-bottom: 0;
+  font-size: 0.8rem;
+  font-weight:lighter ;
+}
+
+
+.prixListe {
+  display:flex;
+  flex-direction: column;
+  font-size: 2rem;
+  text-align: right;
+}
+
+#infoListePrix {
+  margin-top:2rem;
+  background:linear-gradient( #c5a5fc 50%, #FFFFFF  );
+  border-radius: 2% 2% 0 0;
+
+}
+
+
+
+.link {
+  text-decoration: none;
+}
+
+.cardDetail {
+  width : 100%;
+}
+.logoPanier{
+ 
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width:2rem;
+}
+.pastillePanier{
+ 
+  color:rgb(255, 255, 255);
+  margin:0;
+  display:flex;
+  flex-direction: column;
+  font-weight: bolder;
+  background: linear-gradient(#f88b8b,#cc3434,#ec2a2a);
+  border-radius: 50%;
+  width: 1.4rem;
+  height:1.4rem;
+  animation: bounce 2s infinite;
+  z-index: -1;
+  box-shadow: 0 0 5px rgba(71, 3, 60, 0.5);
+}
+
+.btn-white{
+  font-size:0.6rem
+}
+
+.prixOurs, .prixTotalOurs{
+   font-size:1.5rem
+}
+
+.table td {
+  color:rgb(85, 9, 66);
+  vertical-align: middle;
+}
+
+
+.nbOurs {
+  width:4rem;
+}
+
+#passCommand{
+  color:white
+}
+
+.validCommand{
+  justify-content: center;
+  align-items: center;
+}
+
+.email{
+      flex-direction: column;
+}
+
+main {
+  display:flex;
+  justify-content: center;
+ 
+}
+.reussite{
+ margin-top: 15rem;
+ 
+}
+.echec{
+  margin-top: 15rem;
+}
+.panierVide {
+ width: 15rem;
+ margin:auto;
+ margin-top: 25%;
+
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    width:100%
+}
