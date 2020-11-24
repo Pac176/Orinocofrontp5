@@ -3,17 +3,18 @@ import { Cart } from "./Cart.js"
 let cartClass = new Cart()
 
 
+
 export function displayCart() {          /////////////////////////////////Fonction affichage cart
    
-    let nbItems = document.querySelector('.nbItems');
+   
     let passCommand = document.querySelector("#passCommand")
     passCommand.addEventListener("click", () => {
     cartClass.validCommand()//////////////////////////////////////////////appel de la validation sur l'event
     })
     if (JSON.parse(localStorage.getItem("cart"))) {   ////////////////////////affichage sous condition de localstorage
         for (let i = 0; i < cartClass.products.length; i++) {
-            nbItems.innerHTML = cartClass.products.length
-            localStorage.setItem("nombreitem", nbItems.innerHTML)
+           
+            
             let target = document.querySelector(".products");
             let importPanier = document.createElement("tr");
             importPanier.classList.add("produit")
@@ -45,15 +46,17 @@ export function displayCart() {          /////////////////////////////////Foncti
                                             </div>
                                         </td>`;
             
-        }   cartClass.prixTotal /////////////////////////////appel prix total
-            cartClass.cartNotification /////////////////////////appel notification
-            cartClass.deleteFromCart() /////////////////////////appel possibilité d'effacer 
+            }   cartClass.prixTotalSelonQte /////////////////////////////appel prix total
+                cartClass.cartNotification /////////////////////////appel notification
+                cartClass.deleteFromCart() /////////////////////////appel possibilité d'effacer 
+                cartClass.nbItems/////fonction affichage nb items
         
     } else {
         let panier = document.querySelector(".panier")////////////////////////////////////si panier vide
-        panier.innerHTML = `<div class="text-center alert alert-warning panierVide" role="alert">
-                                     Panier vide
+        panier.innerHTML = `<div class="alert alert-warning panierVide" role="alert">
+                                     Vous n'avez rien commandé!!!
                                                                     </div>`}
+
 
 
 }

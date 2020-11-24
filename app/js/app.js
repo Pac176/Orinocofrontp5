@@ -1,13 +1,17 @@
+import { Cart } from "./Cart.js"
 import { pageIndex} from "./index.js"
 import { displayCart } from "./panier.js"
 import { pageProduct} from "./product.js"
 import {validation, btnValid} from "./validation.js"
-
-   // notification panier
+let cartClass = new Cart()
+cartClass.cartNotification    // notification panier
 let url = window.location.pathname
 
+
+
  
-//////////////////////////Switch entre les differentes page en fonction de l'url/////////////////////
+ 
+//////////////////////////construction de l'url de chaque produit pour le 2e requete/////////////////////
 
 switch (url) {
     case "/app/pages/index.html":pageIndex()

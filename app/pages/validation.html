@@ -21,7 +21,7 @@
 <body  class="container-fluid">
       <header class="row bg-light">
         <nav class="col navbar navbar-expand-md bg-whitek navbar-light ">
-            <a class="navbar-brand" href="index.html"><img src="/ressources/logo1.svg" alt="Site logo">
+            <a class="navbar-brand" href="index.html"><img src="../ressources/logo1.svg" alt="Site logo">
                 <h1>Orinoco</h1>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
@@ -36,10 +36,16 @@
                         <a class="nav-link" href="product.html"></a>
                     </li>
                 </ul>
-                <div class="logoPanier">
-                    <a href="panier.html">
-                    </a>
-                </div>
+            <div class="logoPanier" style="visibility:hidden">
+<!-- Emplacement pastille -->
+                <a href="panier.html">
+                    <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-cart2 text-dark" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                    </svg>
+                </a>
+            </div>
             </div>
         </nav>
     </header>
@@ -61,17 +67,17 @@
                 <div class="form-row">
                     <div class="col-md-6 mb-6">
                         <label for=""></label>
-                        <input type="text"    title="votre prenom" pattern="\D{2,10}" class="form-control" id="firstName" placeholder="First name" autofocus
+                        <input type="text"    title="votre prenom" pattern="\D{2,10}" class="form-control is-invalid" id="firstName" placeholder="First name" autofocus
                          required>
-                        <div class="">
+                        <div class="invalid-feedback">
                             Please provide your first name.
                         </div>
                     </div>
                     <div class="col-md-6 mb-6">
                         <label for=""></label>
-                        <input type="text" title="votre nom" pattern="\D+" class="form-control" id="lastName" placeholder="Last name"
+                        <input type="text" title="votre nom" pattern="\D+" class="form-control is-invalid" id="lastName" placeholder="Last name"
                          required>
-                        <div class="">
+                        <div class="invalid-feedback">
                         Please provide your last name.
                         </div>
                     </div>
@@ -79,15 +85,15 @@
                 <div class="form-row">
                     <div class="col-md-6 mb-6">
                         <label for=""></label>
-                        <input type="text"  pattern="([\d]+)?(\s)?\D+" class="form-control" id="address" placeholder="adresse"  required>
-                        <div class="">
+                        <input type="text"  pattern="([\d]+)?(\s)?\D+" class="form-control is-invalid" id="address" placeholder="adresse"  required>
+                        <div class="invalid-feedback">
                             Please provide a valid address.
                         </div>
                     </div>
                     <div class="col-md-6 mb-6">
                         <label for=""></label>
-                        <input type="text"  pattern="[\D]+" class="form-control" id="city" value="" placeholder="ville" required>
-                        <div class="">
+                        <input type="text"  pattern="[\D]+" class="form-control is-invalid" id="city" value="" placeholder="ville" required>
+                        <div class="invalid-feedback">
                             Please provide a valid city.
                         </div>
                     </div>
@@ -101,9 +107,9 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="">@</span>
                             </div>
-                            <input type="email" pattern="[a-z]+\.[a-z]{1,10}@.{1,15}" class="form-control email" id="email"   placeholder="adresse email"  
+                            <input type="email" pattern="[a-z]+\.[a-z]{1,10}@.{1,15}" class="form-control is-invalid email" id="email"   placeholder="adresse email"  
                             required>
-                            <div class="">
+                            <div class="invalid-feedback">
                                 Please provide an email.
                             </div>
                         </div>

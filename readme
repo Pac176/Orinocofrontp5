@@ -1,0 +1,18 @@
+
+Bonjour, pour faire fonctionner la partie front orinoco, veuillez cloner le back sur le repository suivant:
+
+https://github.com/OpenClassrooms-Student-Center/JWDP5
+
+
+
+
+
+Prerequisites
+Vous aurez besoin de node et npm Node installés localement
+
+Installation dans la console
+installer npm: "npm install"
+lancer le serveur: "node server"
+lancer le front (index) sur liveserver
+
+

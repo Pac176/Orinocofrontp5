@@ -21,7 +21,7 @@
 <body  class=" container-fluid">
     <header class="row bg-light">
         <nav class="col navbar navbar-expand-md bg-whitek navbar-light ">
-            <a class="navbar-brand" href="index.html"><img src="/ressources/logo1.svg" alt="Site logo">
+            <a class="navbar-brand" href="index.html"><img src="../ressources/logo1.svg" alt="Site logo">
                 <h1>Orinoco</h1>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
@@ -38,24 +38,27 @@
                 </ul>
             <div class="logoPanier">
 <!-- emplacement pastille -->
-                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-cart2 text-dark" fill="currentColor"
+                <a href="panier.html">
+                    <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-cart2 text-dark" fill="currentColor"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
                             d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
                     </svg>
-                </div>
+                </a>
+            </div>
+            </div>
         </nav>
     </header>
     <main >
-    <section class="pt-5 pb-5"><br><br><br>
-        <div class="container panier"><br><br>
+    <section class="pt-5 pb-5">
+        <div class="container panier">
             <div class="row w-100 ">
                 <div class="col-lg-12 col-md-12 col-12">
                     <h3 class="display-5 mb-2 text-center">Panier</h3>
                     <p class="mb-5 text-center">
 <!-- emplacement nb items -->
                         <i class="nbItems text-info font-weight-bold"></i> Produit(s) dans le panier</p>
-<!-- tableau de produit / panier vide -->
+<!-- tableau de produit -->
                     <table id="shoppingCart" class="table table-condensed table-responsive">
                         <thead>
                             <tr>
@@ -70,7 +73,7 @@
 <!-- import panier -->
                          </tbody>
                     </table>
-<!-- tableau de produit / panier vide -->
+<!-- tableau de produit -->
                     <div class="float-right text-right">
                         <h2 >Total Commande:</h2>
                         <h2 class="prixTotal"></h2>
@@ -78,10 +81,10 @@
                 </div>
             </div>
             <div class="row mt-4 d-flex align-items-center">
-                <div class="col-sm-6 order-md-2 text-right">
+                <div class="col-sm-6 order-sm-2 text-right">
                     <a id="passCommand"    class="btn btn-primary mb-4 btn-lg pl-5 pr-5">Passer la commande</a>
                 </div>
-                <div class="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
+                <div class="col-sm-6 mb-3 mb-m-1 order-sm-1 text-md-left">
                     <a href="index.html">
                         <i class="fas fa-arrow-left mr-2"></i> Continuer les achats</a>
                 </div>

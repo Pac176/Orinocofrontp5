@@ -1,8 +1,8 @@
 /* {
     border: 1px black solid;
    
-}
-*/
+}*/
+
 
 @keyframes bounce{
      from {transform: scale(0.9) translate3d(1px,7px,0); 
@@ -45,23 +45,11 @@ body {
   background-color: #F3E9F1;
    }
 
-.jumbotron {
-  background-color: #797478;
-  color: #F3E9F1;
-  font-size: 2rem;
-  font-family: 'belligerent_madnessregular';
-  padding-top: 6rem; }
-
-.carousel {
-  max-width: 30rem;
-  margin: auto;
-  padding-top: 3rem;
-  padding-bottom: 1rem; }
-
 .teddies {
-    margin: 8rem 2rem 2rem 2rem ;
+    margin-top: 7rem;
+    margin-bottom: 7rem;
     display: flex;
-    
+    flex-direction: row;
 }
 
 .teddiesDetails {
@@ -69,18 +57,21 @@ body {
 
 }
 
-
-
+.selecteurOption {
+  margin-bottom: 1rem;
+}
 .card-body {
     display:flex;
     flex-direction: column;
-    margin: 2rem 2rem 2rem 2rem ;
-    border: 1px solid rgb(168, 123, 123)
+    margin: 1rem 1rem 1rem 1rem ;
+    border: 1px solid rgb(168, 123, 123);
+   
 }
 
 .cardListe { 
   box-shadow: rgb(139, 70, 141) 1px 1px 5px 0px;
   margin-bottom: 2rem; 
+  height: 95%;
   
   }
 
@@ -88,10 +79,30 @@ body {
   display:flex;
   justify-content: center;
   font-family: 'Source Sans Pro';
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   text-align: justify;
 
 }
+@media screen and (max-width: 768px) {
+  .cardDetail {
+  display:flex;
+  width:100%;
+  margin-bottom: 5rem;
+    }
+}
+@media screen and (min-width: 768px) {
+  .cardDetail {
+  display:flex;
+  width:60%;
+  margin-bottom: 5rem;
+    }
+}
+
+.teddie{
+  display:flex;
+  justify-content: center;
+}
+
 .prix {
   font-size:1.7rem;
 }
@@ -99,10 +110,9 @@ body {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
    margin-bottom: 0;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight:lighter ;
 }
-
 
 .prixListe {
   display:flex;
@@ -119,14 +129,11 @@ body {
 }
 
 
-
 .link {
   text-decoration: none;
 }
 
-.cardDetail {
-  width : 100%;
-}
+
 .logoPanier{
  
   display:flex;
@@ -150,6 +157,17 @@ body {
   z-index: -1;
   box-shadow: 0 0 5px rgba(71, 3, 60, 0.5);
 }
+.panier{
+  margin-top: 5rem;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+ .panierVide{
+margin: auto;
+margin-top: 7rem;
+width: 20rem
+ }
 
 .btn-white{
   font-size:0.6rem
@@ -178,30 +196,21 @@ body {
   align-items: center;
 }
 
-.email{
-      flex-direction: column;
-}
-
-main {
-  display:flex;
-  justify-content: center;
- 
-}
-.reussite{
- margin-top: 15rem;
- 
-}
-.echec{
-  margin-top: 15rem;
-}
-.panierVide {
- width: 15rem;
- margin:auto;
- margin-top: 25%;
-
-}
 footer {
-    position: fixed;
-    bottom: 0;
-    width:100%
+  position:fixed;
+  bottom:0;
+  width:100%
+}
+
+
+.email{
+  flex-direction: column;
+}
+
+
+.reussite, .echec{
+ 
+  margin: auto;
+  margin-top: 10rem;
+  width: 30rem;
 }

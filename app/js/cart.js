@@ -1,155 +1,130 @@
- 
+
 /////////////////////////class panier//////////////////////////
 
 export class Cart {
     constructor() {
-///////////////////////////propriété: produits
-    this.products = []
-    this.products = JSON.parse(localStorage.getItem("cart"))
-        
-
-
-
-
-
-
-
+        this.products = []
+        this.products = JSON.parse(localStorage.getItem("cart"))
     }
-/////////////////////////////lien vers validation
+///////////////////////////lien vers validation de commande  
     validCommand() {
-       document.location.href = "http://127.0.0.1:5500/app/pages/validation.html"
+        document.location.href = "http://127.0.0.1:5500/app/pages/validation.html"
     }
-/////////////////////////////pastille notification
+//////////////////////////pastille notification
     get cartNotification() {
         this.products = JSON.parse(localStorage.getItem("cart"))
-        /////////////////////////// si produit dans localstorage
+        /////////////////////////////si produit dans localstorage
         if (JSON.parse(localStorage.getItem("cart"))) {
-                /////////////////// et si pastille panier n'existe pas creer pastille
-                if (document.querySelector(".pastillePanier") == null) {
-                    let logoPanier = document.querySelector(".logoPanier")
-                    let pastille = document.createElement("notification")
-                    pastille.classList.add("pastillePanier")
-                    logoPanier.insertAdjacentElement("afterbegin",pastille)
-                    pastille.innerHTML = this.products.length
-                /////////////////// Mettre a jour pastille
-                } else {
-                    let pastille = document.querySelector(".pastillePanier")
-                    pastille.innerHTML = this.products.length
-                    pastille.classList.add("pastillePanier")
+            ////////////////////et si n'existe pas alors création
+            if (document.querySelector(".pastillePanier") == null) {
+                let logoPanier = document.querySelector(".logoPanier")
+                let pastille = document.createElement("notification")
+                pastille.classList.add("pastillePanier")
+                logoPanier.insertAdjacentElement("afterbegin", pastille)
+                pastille.innerHTML = this.products.length
+            } else {
+                /////////////////////sinon juste mise a jour
+                let pastille = document.querySelector(".pastillePanier")
+                pastille.innerHTML = this.products.length
+                pastille.classList.add("pastillePanier")
             }
         }
     }
-////////////////////////////supprimer du panier
+////////////////////////effacer item du panier
     deleteFromCart() {
-        ////////////////////////je determine les variables utilisées
         let divpanier = document.querySelector(".products")
         let reset = document.querySelectorAll(".reset");
         let produit = document.querySelectorAll(".produit");
-        /////////////////////////boucle sur les boutons supprimer
+        /////////////////////////////boucle sur les boutton supprimer
         for (let i = 0; i < reset.length; i++) {
-                /////////////////event sur le bouton
-                reset[i].addEventListener("click", () => {
-                    this.products = JSON.parse(localStorage.getItem("cart"));
-                    this.products.splice(reset[i], 1)
-                    console.log(this.products)
-                    //////////////////si il reste un seul produit
-                    if (this.products.length == 0) { 
-                        if (confirm("Etes vous sur de vouloir supprimer ce produit?")) {
-                            //////////////et si je confirme alors
-                            divpanier.removeChild(produit[i]);     
-                            localStorage.clear();
-                            let logoPanier = document.querySelector(".logoPanier")
-                            let pastille = document.querySelector(".pastillePanier")
-                            logoPanier.removeChild(pastille)  
-                            let panier = document.querySelector(".panier")
-                            panier.innerHTML = `<div class="alert alert-warning" role="alert">
-                                     Vous n'avez rien commandé!!!
-                                                                    </div>`
-                        } else {/*sinon rien*/ }
-                ////////////////et si plus de  un produit et confirme je renvoir sur localstorage, recalcul total et pastille
-            }else if (confirm("Etes vous sur de vouloir supprimer ce produit?")){
-                localStorage.setItem("cart", JSON.stringify(this.products))
-                divpanier.removeChild(produit[i]);
-                this.prixTotal()
-                this.cartNotification
-                }      
+            reset[i].addEventListener("click", () => {
+                this.products = JSON.parse(localStorage.getItem("cart"));
+                this.products.splice(reset[i], 1)
+                /////////////////si dernier produit et confirmation alors panier vide
+                if (this.products.length == 0) {
+                    if (confirm("Etes vous sur de vouloir supprimer ce produit?")) {
+                        divpanier.removeChild(produit[i]);
+                        localStorage.clear();
+                        let logoPanier = document.querySelector(".logoPanier")
+                        let pastille = document.querySelector(".pastillePanier")
+                        logoPanier.removeChild(pastille)
+                        location.href = "http://127.0.0.1:5500/app/pages/index.html"
+                    }
+                    ////////////////si pas dernier alors juste effacer l'item
+                } else if (confirm("Etes vous sur de vouloir supprimer ce produit?")) {
+                    localStorage.setItem("cart", JSON.stringify(this.products))
+                    divpanier.removeChild(produit[i]);
+                    this.prixTotalSelonQte
+                    this.cartNotification
+                    this.nbItems
+                }
             })
         }
     }
-    get prixTotal() {
-        console.log(this.product)
-////////////////////si il y a au moins 1 produit
-        if (this.products.length > 0) {
-            let prixPanier = []   /////prix des differents items du panier
-            for (let i = 0; i < this.products.length; i++) {
-                prixPanier[i] = `${this.products[i].price / 100}`//////////////////recuperation des prix pour calcul total
-            }
-            let prixTotal = document.querySelector(".prixTotal ");
-            let subTotal = document.querySelectorAll(".prixTotalOurs");
-            let nbOurs = document.querySelectorAll(".nbOurs");
-            let prixOurs = document.querySelectorAll(".prixOurs")
-            let qte = []
-            let nbItems = document.querySelector(".nbItems")
-            qte[0] = nbItems.innerHTML
-///////////////////////////////////////////utilisation de la methode reduce sur le tableau de prix prixPanier
+////////////////////////fonction calcul et envoi sur localstorage
+    get prixTotalQteInLocalstorage() {
+        let qte = []
+        let prixPanier = [] 
+        let prixTotal = document.querySelector(".prixTotal ");
+        let subTotal = document.querySelectorAll(".prixTotalOurs");
+        let nbOurs = document.querySelectorAll(".nbOurs");
+         let prixOurs = document.querySelectorAll(".prixOurs")
+        for (let i = 0; i < subTotal.length; i++) {
+            subTotal[i].innerHTML = nbOurs[i].value * parseInt(prixOurs[i].innerHTML) + "€";
+            prixPanier[i] = parseInt(subTotal[i].innerHTML)//////////////////recuperation des prix pour calcul total
             const reducer = (accumulator, currentValue) => parseInt(accumulator) + parseInt(currentValue);
             prixTotal.innerHTML = prixPanier.reduce(reducer) + "€";
-            localStorage.setItem("total", prixTotal.innerHTML) /////envoi sur localstorage pour recuperation et affichage dans le formulaire
-//////////////////////////////////////////////affichage subtotal
-            for (let i = 0; i < subTotal.length; i++) {
-                subTotal[i].innerHTML = nbOurs[i].value * parseInt(prixOurs[i].innerHTML) + "€";
-///////////////////////////////////////////récupération des quantités et envoi sur localstorage
-                for (let i = 0; i < nbOurs.length; i++) {
-                    qte[i] = parseInt(nbOurs[i].value)
-                    const reducer = (accumulator, currentValue) => parseInt(accumulator) + parseInt(currentValue);
-                    localStorage.setItem("Quantité", qte.reduce(reducer))
-                }
-//////////////////////////////////////////event recalcul sur le changement de quantité avec "change" pour ne pas avoir de refresh a faire
-                nbOurs[i].addEventListener("change", function () {
-                    subTotal[i].innerHTML = nbOurs[i].value * parseInt(prixOurs[i].innerHTML) + "€";
-                    prixPanier[i] = parseInt(subTotal[i].innerHTML)
-                    const reducer = (accumulator, currentValue) => parseInt(accumulator) + parseInt(currentValue);
-                    prixTotal.innerHTML = prixPanier.reduce(reducer) + "€";
-                    localStorage.setItem("total", prixTotal.innerHTML)
-                    
-                    for (let i = 0; i < nbOurs.length; i++) {
-                        qte[i] = parseInt(nbOurs[i].value)
-                        const reducer = (accumulator, currentValue) => parseInt(accumulator) + parseInt(currentValue);
-                        localStorage.setItem("Quantité", qte.reduce(reducer))
-                    }
-                })
+            localStorage.setItem("total", prixTotal.innerHTML) ////envoi sur le localstorage pour utilisation
+            qte[i] = parseInt(nbOurs[i].value)
+            const quantite = (accumulator, currentValue) => parseInt(accumulator) + parseInt(currentValue);
+            localStorage.setItem("Quantité", qte.reduce(quantite))////envoi sur le localstorage pour utilisation
+        }
+    }
+///////////////////////Fonction calcul du total commande avec variation qte
+    get prixTotalSelonQte() {
+        //////////si il y a des produits dans le panier avec par defaut quantité a 1
+        if (this.products.length > 0) {
+            let nbOurs = document.querySelectorAll(".nbOurs");
+            for (let i = 0; i < nbOurs.length; i++) {
+                this.prixTotalQteInLocalstorage
+            nbOurs[i].addEventListener("change", () => {
+                this.prixTotalQteInLocalstorage
+               })
             }
         } 
     }
-///////////////////////////Ajouter un produit au panier 
+////////////////////////fonction ajout de produit dans le panier   
     addToCart(value) {
-        ///////////////////si deja un produit je recupere le produit
+       /////////////////s'il y a un cart actif alors import des produits
         if (localStorage.getItem("cart")) {
-            ///////////j'importe le tableau de produits
             this.products = JSON.parse(localStorage.getItem("cart"))
+         ///////////////je test pour eviter une répétition du meme produit   
             let test;
-            ///////////////pour eviter de remettre le meme produit plusieurs fois on test les doublons
             for (let product of this.products) {
-                if (product._id == value._id) {
-                    return test = true
+                if (product._id == value._id) {alert("vous avez deja ce produit dans le panier")
+                    return test = true //arret de la boucle des le true
                 }
             }
-            ///////////////si doublons je renvoi au localstorage
+        ///////////////si produit present renvoi au localstorage
             if (test == true) {
-                localStorage.setItem("cart", JSON.stringify(this.products))
-            ///////////////si pas de doublon j'ajoute le produit au tableau et je renvoi le tableau sur localstorage
-            }else{
+                    localStorage.setItem("cart", JSON.stringify(this.products))
+                } else {
+        ///////////////sinon ajouter le produit au tableau et renvoi sur localstorage
                 this.products.push(value)
                 localStorage.setItem("cart", JSON.stringify(this.products))
                 }
-        /////////////////////si aucun produit je l'ajoute en créant le "cart" sur localstorage
-        }else{
+        //////////////////////si c'est le premier produit alors envoi sur localstorage
+        } else {
+            
             localStorage.setItem("cart", JSON.stringify([value]))
            
         }
         
     }
+    get nbItems() {
+     let nbItems = document.querySelector('.nbItems');
+    nbItems.innerHTML = this.products.length
+    localStorage.setItem("nombreitem", nbItems.innerHTML)
+    }
 }
-
-
    

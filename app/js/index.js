@@ -1,5 +1,5 @@
-import { Cart } from "./Cart.js"
-let cartClass = new Cart()
+
+
 
 
 let urlTeddies = "http://localhost:3000/api/teddies";      // adresse API
@@ -28,12 +28,14 @@ let urlTeddies = "http://localhost:3000/api/teddies";      // adresse API
 
  export async function getDataFromApi() {
       try {const reponse = await fetch(urlTeddies);
-        let products = await reponse.json();
+      let products = await reponse.json();
       return products 
+        
       } catch (error) {
         alert (error.message)
       }
-}
+ 
+ }
 //////////////////////fonction affichage liste products////////////////////////////////
 
 export function showproductList(productsFromApi) {
@@ -73,17 +75,25 @@ export function choixproduct() {
   }
 }
 
+///////////////lien vers product/////////////
+
+
+let cardListe = document.querySelectorAll(".cardListe")
+for (let card of cardListe) {
+  card.addEventListener("click", ) 
+}
+
+
+
 ////////////////////////////////fonction Page index/////////////////
 
 export function pageIndex() {
 getDataFromApi().then(function (products) {
-  showproductList(products); //appel de la fonction listeproducts 
-  choixproduct();              //appel de la fonction survol
-  cartClass.cartNotification
-
-
-
-
-   })
+   showproductList(products); //appel de la fonction listeproducts 
+    choixproduct();              //appel de la fonction survol
+  
+     
+    
+ })
 }
 
