@@ -61,7 +61,7 @@ export function validation() {
     ///////////////////////////annulation commande ///////////////////////////////////////////////
 
     let annule = document.querySelector(".annule");
-        annule.addEventListener("click", function (event) {
+        annule.addEventListener("click",  (event) => {
 
         if (confirm("Etes vous sur de vouloir annuler votre commande?")) {
             event.preventDefault()

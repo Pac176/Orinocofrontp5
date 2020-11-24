@@ -64,7 +64,7 @@ export function showProductDetail(productFromApi) {
 
     let btnPanier = document.querySelector("#btn_panier");
     let selectColor = document.querySelector(".selectpicker")
-      btnPanier.addEventListener("click", function () {
+      btnPanier.addEventListener("click", () => {
         if (selectColor.value == "selectionnez la couleur...") {
           return alert("veuillez selectionner une couleur")
         }else {

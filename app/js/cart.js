@@ -1,4 +1,3 @@
-
 /////////////////////////class panier//////////////////////////
 
 export class Cart {
@@ -121,10 +120,11 @@ export class Cart {
         }
         
     }
-    get nbItems() {
+
+get nbItems() {
      let nbItems = document.querySelector('.nbItems');
     nbItems.innerHTML = this.products.length
     localStorage.setItem("nombreitem", nbItems.innerHTML)
-    }
+}
 }
    

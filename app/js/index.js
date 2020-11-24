@@ -1,7 +1,4 @@
 
-
-
-
 let urlTeddies = "http://localhost:3000/api/teddies";      // adresse API
  
 //Utilisation d'httprequest pour info
@@ -26,7 +23,7 @@ let urlTeddies = "http://localhost:3000/api/teddies";      // adresse API
 
 ////////////fonction asynchrone permettant d'utiliser await derriere l'API fetch/////////////////////
 
- export async function getDataFromApi() {
+async function getDataFromApi() {
       try {const reponse = await fetch(urlTeddies);
       let products = await reponse.json();
       return products 
@@ -38,7 +35,7 @@ let urlTeddies = "http://localhost:3000/api/teddies";      // adresse API
  }
 //////////////////////fonction affichage liste products////////////////////////////////
 
-export function showproductList(productsFromApi) {
+function showproductList(productsFromApi) {
   let target = document.querySelector(".teddies");
     
   for (let i = 0; i < productsFromApi.length; i++) {
@@ -67,7 +64,7 @@ export function showproductList(productsFromApi) {
 
 ////////////////////////////////Fonction survol products/////////////////////////////////
 
-export function choixproduct() {
+function choixproduct() {
        const card = document.querySelectorAll(".card");
      for (const element of card) {
        element.addEventListener("mouseover", function () { element.style = "box-shadow: #6F35C0 4px 4px 9px 5px; cursor:  pointer"; })
@@ -91,9 +88,7 @@ export function pageIndex() {
 getDataFromApi().then(function (products) {
    showproductList(products); //appel de la fonction listeproducts 
     choixproduct();              //appel de la fonction survol
-  
      
-    
  })
 }
 

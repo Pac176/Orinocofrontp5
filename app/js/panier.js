@@ -34,7 +34,7 @@ export function displayCart() {          /////////////////////////////////Foncti
                                         <td class ="prixOurs" data-th="Price">${cartClass.products[i].price / 100}€</td>
                                         <td data-th="Quantity">
                                         
-                                            <input type="number" class="nbOurs form-control form-control-lg text-center" value="1">
+                                            <input type="number" class="nbOurs form-control form-control-lg text-center" value="1" min="1">
                                         </td>
                                         <td class="actions" data-th="">
                                             <div class="text-right">
