@@ -31,8 +31,7 @@ async function getDataFromApi() {
       } catch (error) {
         alert (error.message)
       }
- 
- }
+  }
 //////////////////////fonction affichage liste products////////////////////////////////
 
 function showproductList(productsFromApi) {

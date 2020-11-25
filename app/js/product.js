@@ -70,7 +70,6 @@ export function showProductDetail(productFromApi) {
         }else {
           cartClass.addToCart(productFromApi)   ////////////////////appel de la fonction de la class cart
           cartClass.cartNotification         
-         
     }  
   }) 
 }

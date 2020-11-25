@@ -8,7 +8,7 @@ let validCommande;
 function postData() {
     validCommande = fetch("http://localhost:3000/api/teddies/order", {
         method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(commandUser)
-       }); return validCommande
+    }).then(response => response.json()); return validCommande
 }
  
 function affichageValidation(response) {
@@ -126,7 +126,7 @@ validCommand.addEventListener("click", () => {
             alert("veuiller remplir le formulaire")
        } else {
         setTimeout(function () {
-        postData().then(response => response.json())
+        postData()
         .then(response => affichageValidation(response))
         .catch(error => affichageErreure(error) )}, 1500)
         }
