@@ -3,49 +3,49 @@ let commandUser;
 let valid = [false]
 
 //////////////////requete Post pour envoyer commandUser(contact + products)///////////////////////////////////
+let validCommande;
 
-async function postData() {
-    console.log(commandUser)
-    try {
-        const validCommande = await fetch("http://localhost:3000/api/teddies/order", {
-            method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(commandUser)
-        });
-        
-        if (validCommande.status == 200 || validCommande.status == 201) {
-            let response = await validCommande.json();
-            
+function postData() {
+    validCommande = fetch("http://localhost:3000/api/teddies/order", {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(commandUser)
+       }); return validCommande
+}
+ 
+function affichageValidation(response) {
+       if (response.orderId) {
+       
+    let prixTotal = localStorage.getItem("total")
     let validation = document.querySelector(".validation")
     validation.setAttribute("class","alert alert-success reussite")
-            validation.innerHTML =`<h4 class="alert-heading text-center">Commande validée!</h4>
+           validation.innerHTML = `<h4 class="alert-heading text-center">Commande validée!</h4>
                     <hr>
+                    <p>Prix total: ${prixTotal}</p>
                     <p>Votre numero de commande est le: </p>
                     <p class="mb-0">${response.orderId}</p>
                     <hr>
-                    <p> Vous allez recevoir une confirmation a l'adresse suivante: ${commandUser.contact.email}</p>`
-       
-        } else {
-            
-            let echec = document.querySelector(".validation")
+                    <p> Vous allez recevoir une confirmation a l'adresse suivante: ${commandUser.contact.email}</p>`;
+           localStorage.clear()
+           
+   } else {
+       let echec = document.querySelector(".validation")
     echec.setAttribute("class","alert alert-danger echec")
     echec.innerHTML=`<h4 class="alert-heading">Echec!</h4>
                     <p>La requete n'a pas aboutie</p>
                     <hr>
-                    <p class="mb-0">code erreure: ${validCommande.status} / ${validCommande.statusText}</p>`
-       
-   }
-     
-    } catch (e) {
-        let echec = document.querySelector(".validation")
+                    <p class="mb-0">Vérifier que le panier n'est pas vide</p>`
+  }
+}
+
+function affichageErreure(e) {
+    let echec = document.querySelector(".validation")
     echec.setAttribute("class","alert alert-danger echec")
     echec.innerHTML=`<h4 class="alert-heading">Echec!</h4>
-                    <p>Le serveur renvoi une erreure!</p>
+                    <p>Erreure au moment de la requete!</p>
                     <hr>
                     <p class="mb-0">${e.message}</p>`
-       
-    }
-} 
+}
 
-//////////////////////////bouton de validation//////////////////////////////////////////////
+/////////////////////////bouton de validation//////////////////////////////////////////////
 
 
 export function validation() {
@@ -120,12 +120,15 @@ let form = document.querySelector("#order-form");
     
 validCommand.addEventListener("click", () => {
         if (!JSON.parse(localStorage.getItem("cart"))) {
-            alert("Vous ne pouvez pas commander, le panier est vide")
+           alert("Vous ne pouvez pas commander, le panier est vide")
         }
         else if (valid.includes(false)){
             alert("veuiller remplir le formulaire")
-        } else {
-            setTimeout(function () { postData().then(localStorage.clear()); }, 1500)
+       } else {
+        setTimeout(function () {
+        postData().then(response => response.json())
+        .then(response => affichageValidation(response))
+        .catch(error => affichageErreure(error) )}, 1500)
         }
     })
 }
