@@ -7,13 +7,12 @@ let validCommande;
 
 function postData() {
     validCommande = fetch("http://localhost:3000/api/teddies/order", {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(commandUser)
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(commandUser), mode:'cors'
     }).then(response => response.json()); return validCommande
 }
  
 function affichageValidation(response) {
        if (response.orderId) {
-       
     let prixTotal = localStorage.getItem("total")
     let validation = document.querySelector(".validation")
     validation.setAttribute("class","alert alert-success reussite")
@@ -27,7 +26,7 @@ function affichageValidation(response) {
            localStorage.clear()
            
    } else {
-       let echec = document.querySelector(".validation")
+    let echec = document.querySelector(".validation")
     echec.setAttribute("class","alert alert-danger echec")
     echec.innerHTML=`<h4 class="alert-heading">Echec!</h4>
                     <p>La requete n'a pas aboutie</p>
@@ -126,8 +125,7 @@ validCommand.addEventListener("click", () => {
             alert("veuiller remplir le formulaire")
        } else {
         setTimeout(function () {
-        postData()
-        .then(response => affichageValidation(response))
+        postData().then(response => affichageValidation(response))
         .catch(error => affichageErreure(error) )}, 1500)
         }
     })

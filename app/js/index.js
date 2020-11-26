@@ -24,7 +24,7 @@ let urlTeddies = "http://localhost:3000/api/teddies";      // adresse API
 ////////////fonction asynchrone permettant d'utiliser await derriere l'API fetch/////////////////////
 
 async function getDataFromApi() {
-      try {const reponse = await fetch(urlTeddies);
+      try {const reponse = await fetch(urlTeddies,{mode:'cors'});
       let products = await reponse.json();
       return products 
         

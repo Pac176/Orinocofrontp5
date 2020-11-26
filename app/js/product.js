@@ -16,7 +16,7 @@ const urlApiId = urlTeddies + "/" + urlId
 
  export async function getDataIdFromApi() {
   try {              
-    const reponse = await fetch(urlApiId);
+    const reponse = await fetch(urlApiId,{mode:'cors'});
     let product = await reponse.json();
     return product
   }catch (erreur) {
