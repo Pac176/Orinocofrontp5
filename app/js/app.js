@@ -11,9 +11,9 @@ let url = window.location.pathname
 
  
  
-//////////////////////////construction de l'url de chaque produit pour le 2e requete/////////////////////
 
-switch (url) {
+try {
+    switch (url) {
     case "/app/pages/index.html":pageIndex()
         break;
     case "/app/pages/product.html":pageProduct()
@@ -22,6 +22,11 @@ switch (url) {
         break;
     case"/app/pages/validation.html": validation(),btnValid()
         break;
+}
+
+    
+} catch (error) { console.log(error)
+    
 }
 
 
