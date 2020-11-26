@@ -1,13 +1,17 @@
+
+
+
+
 /////////////////////////class panier//////////////////////////
 
-export class Cart {
+class Cart {
     constructor() {
         this.products = []
         this.products = JSON.parse(localStorage.getItem("cart"))
     }
 ///////////////////////////lien vers validation de commande  
     validCommand() {
-        document.location.href = "http://127.0.0.1:5500/app/pages/validation.html"
+        document.location.href = "validation.html"
     }
 //////////////////////////pastille notification
     get cartNotification() {
@@ -47,7 +51,7 @@ export class Cart {
                         let logoPanier = document.querySelector(".logoPanier")
                         let pastille = document.querySelector(".pastillePanier")
                         logoPanier.removeChild(pastille)
-                        location.href = "http://127.0.0.1:5500/app/pages/index.html"
+                        location.href = "index.html"
                     }
                     ////////////////si pas dernier alors juste effacer l'item
                 } else if (confirm("Etes vous sur de vouloir supprimer ce produit?")) {

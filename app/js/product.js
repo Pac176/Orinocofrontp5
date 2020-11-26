@@ -1,5 +1,5 @@
-import { Cart } from "./Cart.js"
 let cartClass = new Cart()
+cartClass.cartNotification    // notification panier
 
 
 let urlTeddies = "http://localhost:3000/api/teddies"  ////url API
@@ -14,7 +14,7 @@ const urlApiId = urlTeddies + "/" + urlId
 
 ///////////////////2eme requete avec ID////////////////////////////////////////
 
- export async function getDataIdFromApi() {
+ async function getDataIdFromApi() {
   try {              
     const reponse = await fetch(urlApiId,{mode:'cors'});
     let product = await reponse.json();
@@ -27,7 +27,7 @@ const urlApiId = urlTeddies + "/" + urlId
 
 //////////////////////fonction affichage du detail produit////////////////////////////////
 
-export function showProductDetail(productFromApi) {
+function showProductDetail(productFromApi) {
   let target = document.querySelector(".teddies");
     target.setAttribute("style", "justify-content:center")
     target.innerHTML = ""
@@ -75,9 +75,11 @@ export function showProductDetail(productFromApi) {
 }
 ////////////////////////////////////////////fonction page produit
 
-export function pageProduct(){
+
+function pageProduct() {
 getDataIdFromApi().then(function (product) {
 showProductDetail(product); //appel de la fonction productsdetail
     })
 }
 
+pageProduct()

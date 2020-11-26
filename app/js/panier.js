@@ -1,10 +1,10 @@
 
-import { Cart } from "./Cart.js"
+
 let cartClass = new Cart()
+cartClass.cartNotification    // notification panier
 
 
-
-export function displayCart() {          /////////////////////////////////Fonction affichage cart
+ function displayCart() {          /////////////////////////////////Fonction affichage cart
    
    
     let passCommand = document.querySelector("#passCommand")
@@ -60,57 +60,7 @@ export function displayCart() {          /////////////////////////////////Foncti
 
 
 }
-        
-
-         
-        
-        
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
+displayCart()

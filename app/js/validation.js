@@ -47,7 +47,7 @@ function affichageErreure(e) {
 /////////////////////////bouton de validation//////////////////////////////////////////////
 
 
-export function validation() {
+ function validation() {
     
     let nbArticles = document.querySelector(".nbArticles")
     let totalCommand = document.querySelector(".totalCommande")
@@ -64,7 +64,7 @@ export function validation() {
 
         if (confirm("Etes vous sur de vouloir annuler votre commande?")) {
             event.preventDefault()
-            document.location.href = "http://127.0.0.1:5500/app/pages/index.html"
+            document.location.href = "index.html"
             localStorage.clear()
             // Code à éxécuter si le l'utilisateur clique sur "OK"
 } else {
@@ -109,7 +109,7 @@ export function validation() {
  
 ///////////////////////////////////////////////////////requete post si le formulaire est valide
 
-export function btnValid() {
+ function btnValid() {
   
 let validCommand =document.querySelector(".validCommand")
 let form = document.querySelector("#order-form");
@@ -132,7 +132,7 @@ validCommand.addEventListener("click", () => {
 }
 
 
-
+validation(),btnValid()
 
 
   
