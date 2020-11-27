@@ -13,6 +13,6 @@ Vous aurez besoin de node et npm Node installés localement
 Installation dans la console
 installer npm: "npm install"
 lancer le serveur: "node server"
-lancer le front (index) sur liveserver
+ouvrir index.html
 
 
