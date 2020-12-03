@@ -1,0 +1,28 @@
+{
+  "name": "p5front",
+  "version": "1.0.0",
+  "description": "Voici le front du P5 openclasserooms",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "eslint app/js/*.js --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pac176/Orinocofrontp5.git"
+  },
+  "author": "Pascal Godbille",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pac176/Orinocofrontp5/issues"
+  },
+  "homepage": "https://github.com/Pac176/Orinocofrontp5#readme",
+  "devDependencies": {
+    "eslint": "^7.14.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-vue": "^7.1.0"
+  }
+}

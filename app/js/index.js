@@ -1,10 +1,10 @@
 
-let cartClass = new Cart()
-cartClass.cartNotification    // notification panier
+const cartClass = new Cart();
+cartClass.cartNotification; // notification panier
 
-let urlTeddies = "http://localhost:3000/api/teddies";      // adresse API
- 
-//Utilisation d'httprequest pour info
+const urlTeddies = 'http://localhost:3000/api/teddies'; // adresse API
+
+// Utilisation d'httprequest pour info
 // let importFromApi = function (url) {
 //     return new Promise(function (resolve, reject) {
 //         let xhr = new XMLHttpRequest();
@@ -22,32 +22,31 @@ let urlTeddies = "http://localhost:3000/api/teddies";      // adresse API
 //         }
 //     })
 // };
-  
 
-////////////fonction asynchrone permettant d'utiliser await derriere l'API fetch/////////////////////
+/// /////////fonction asynchrone permettant d'utiliser await derriere l'API fetch/////////////////////
 
-async function getDataFromApi() {
-      try {const reponse = await fetch(urlTeddies);
-      let products = await reponse.json();
-      return products 
-        
-      } catch (error) {
-        alert (error.message)
-      }
+async function getDataFromApi () {
+  try {
+    const reponse = await fetch(urlTeddies);
+    const products = await reponse.json();
+    return products;
+  } catch (error) {
+    alert(error.message);
   }
-//////////////////////fonction affichage liste products////////////////////////////////
+}
+/// ///////////////////fonction affichage liste products////////////////////////////////
 
-function showproductList(productsFromApi) {
-  let target = document.querySelector(".teddies");
-    
+function showproductList (productsFromApi) {
+  const target = document.querySelector('.teddies');
+
   for (let i = 0; i < productsFromApi.length; i++) {
-    let domproduct = document.createElement("product");
-    let item = productsFromApi[i];
+    const domproduct = document.createElement('product');
+    const item = productsFromApi[i];
     target.appendChild(domproduct);
-    let colors = []
-    for (let color of item.colors) {
-      colors.push(" " + color)
-      domproduct.classList.add("teddie", "col-12", "col-md-6", "col-lg-4", "col-xl-3")
+    const colors = [];
+    for (const color of item.colors) {
+      colors.push(' ' + color);
+      domproduct.classList.add('teddie', 'col-12', 'col-md-6', 'col-lg-4', 'col-xl-3');
       domproduct.innerHTML = `<a href="product.html?id=${item._id}"<div style="text-decoration: none; color:black" href="">
                                         <div class="card cardListe" id="${item.name}">
                                             <div class="card-body">
@@ -59,39 +58,35 @@ function showproductList(productsFromApi) {
                                                 
                                             </div>
                                         </div>
-                                      </div></a>`
+                                      </div></a>`;
     }
   }
 }
 
-////////////////////////////////Fonction survol products/////////////////////////////////
+/// /////////////////////////////Fonction survol products/////////////////////////////////
 
-function choixproduct() {
-       const card = document.querySelectorAll(".card");
-     for (const element of card) {
-       element.addEventListener("mouseover", function () { element.style = "box-shadow: #6F35C0 4px 4px 9px 5px; cursor:  pointer"; })
-       element.addEventListener("mouseout", function () { element.style = ""; });
+function choixproduct () {
+  const card = document.querySelectorAll('.card');
+  for (const element of card) {
+    element.addEventListener('mouseover', function () { element.style = 'box-shadow: #6F35C0 4px 4px 9px 5px; cursor:  pointer'; });
+    element.addEventListener('mouseout', function () { element.style = ''; });
   }
 }
 
-///////////////lien vers product/////////////
+/// ////////////lien vers product/////////////
 
-
-let cardListe = document.querySelectorAll(".cardListe")
-for (let card of cardListe) {
-  card.addEventListener("click", ) 
+const cardListe = document.querySelectorAll('.cardListe');
+for (const card of cardListe) {
+  card.addEventListener('click');
 }
 
+/// /////////////////////////////fonction Page index/////////////////
 
-
-////////////////////////////////fonction Page index/////////////////
-
-function pageIndex() {
-getDataFromApi().then(function (products) {
-   showproductList(products); //appel de la fonction listeproducts 
-    choixproduct();              //appel de la fonction survol
-     
- })
+function pageIndex () {
+  getDataFromApi().then(function (products) {
+    showproductList(products); // appel de la fonction listeproducts
+    choixproduct(); // appel de la fonction survol
+  });
 }
 
-pageIndex()
+pageIndex();

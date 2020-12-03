@@ -1,25 +1,19 @@
 
+const cartClass = new Cart();
+cartClass.cartNotification; // notification panier
 
-let cartClass = new Cart()
-cartClass.cartNotification    // notification panier
-
-
- function displayCart() {          /////////////////////////////////Fonction affichage cart
-   
-   
-    let passCommand = document.querySelector("#passCommand")
-    passCommand.addEventListener("click", () => {
-    cartClass.validCommand()//////////////////////////////////////////////appel de la validation sur l'event
-    })
-    if (JSON.parse(localStorage.getItem("cart"))) {   ////////////////////////affichage sous condition de localstorage
-        for (let i = 0; i < cartClass.products.length; i++) {
-           
-            
-            let target = document.querySelector(".products");
-            let importPanier = document.createElement("tr");
-            importPanier.classList.add("produit")
-            target.appendChild(importPanier);
-            importPanier.innerHTML = `<td data-th="Produit">
+function displayCart () { /// //////////////////////////////Fonction affichage cart
+  const passCommand = document.querySelector('#passCommand');
+  passCommand.addEventListener('click', () => {
+    cartClass.validCommand();/// ///////////////////////////////////////////appel de la validation sur l'event
+  });
+  if (JSON.parse(localStorage.getItem('cart'))) { /// /////////////////////affichage sous condition de localstorage
+    for (let i = 0; i < cartClass.products.length; i++) {
+      const target = document.querySelector('.products');
+      const importPanier = document.createElement('tr');
+      importPanier.classList.add('produit');
+      target.appendChild(importPanier);
+      importPanier.innerHTML = `<td data-th="Produit">
                                             <div class="row">
                                                 <div class="col-md-3 text-left">
                                                     <img src=${cartClass.products[i].imageUrl} alt=""
@@ -45,22 +39,16 @@ cartClass.cartNotification    // notification panier
                                                 <div></div>
                                             </div>
                                         </td>`;
-            
-            }   cartClass.prixTotalSelonQte /////////////////////////////appel prix total
-                cartClass.cartNotification /////////////////////////appel notification
-                cartClass.deleteFromCart() /////////////////////////appel possibilité d'effacer 
-                cartClass.nbItems/////fonction affichage nb items
-        
-    } else {
-        let panier = document.querySelector(".panier")////////////////////////////////////si panier vide
-        panier.innerHTML = `<div class="alert alert-warning panierVide" role="alert">
+    } cartClass.prixTotalSelonQte; /// //////////////////////////appel prix total
+    cartClass.cartNotification; /// //////////////////////appel notification
+    cartClass.deleteFromCart(); /// //////////////////////appel possibilité d'effacer
+    cartClass.nbItems;/// //fonction affichage nb items
+  } else {
+    const panier = document.querySelector('.panier');/// /////////////////////////////////si panier vide
+    panier.innerHTML = `<div class="alert alert-warning panierVide" role="alert">
                                      Vous n'avez rien commandé!!!
-                                                                    </div>`}
-
-
-
+                                                                    </div>`;
+  }
 }
 
-
-
-displayCart()
+displayCart();
