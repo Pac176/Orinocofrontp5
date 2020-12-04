@@ -101,19 +101,14 @@ class Cart {
   /// /////////////////////fonction ajout de produit dans le panier
   addToCart (value) {
     /// //////////////s'il y a un cart actif alors import des produits
+    const jsonValue = JSON.stringify(value);
     if (localStorage.getItem('cart')) {
       this.products = JSON.parse(localStorage.getItem('cart'));
-      /// ////////////je test pour eviter une répétition du meme produit
-      let test;
-      for (const product of this.products) {
-        if (product._id === value._id) {
-          alert('vous avez deja ce produit dans le panier');
-          return test = true; // arret de la boucle des le true
-        }
-      }
-      /// ////////////si produit present renvoi au localstorage
-      if (test === true) {
-        localStorage.setItem('cart', JSON.stringify(this.products));
+      const jsonProducts = JSON.stringify(this.products);
+      /// ////////////je test pour eviter une répétition du meme produit (passage par json car objets identiques mais de reference differente)
+
+      if (jsonProducts.includes(jsonValue)) {
+        alert('vous avez deja ce produit dans le panier');
       } else {
         /// ////////////sinon ajouter le produit au tableau et renvoi sur localstorage
         this.products.push(value);

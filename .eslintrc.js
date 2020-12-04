@@ -16,5 +16,9 @@ module.exports = {
   ],
   rules: {
     "semi": ["error", "always"],
+    "no-unused-expressions": "warn",
+    "no-undef": "warn",
+    "no-unused-expressions": "warn",
+    "no-unused-vars":"warn"
   }
 }
